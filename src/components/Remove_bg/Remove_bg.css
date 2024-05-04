@@ -1,0 +1,46 @@
+
+
+.no_bg_title{
+    position: absolute;
+    color: #2196f3ad;
+    text-align: right;
+    margin-right: 20px;
+    font-size: 12px;
+    margin-top: 25px;
+    right: 0;
+}
+
+.uploaded_img{
+    width: 100%;
+    margin-top: 73px;
+}
+
+.np_bg_cont{
+    position: relative;
+}
+
+
+.warning{
+    position: absolute;
+    right: 4px;
+    top: 28px;
+}
+
+.choose_color{
+    background-color: transparent;
+    color: #ffffff8f;
+    border: 1px solid #ffffff8f;
+    border-radius: 20px;
+    padding: 7px;
+    width: 100px;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+.input_color{
+    opacity: 0;
+    position: absolute;
+    top: 19px;
+    left: 15px;
+}

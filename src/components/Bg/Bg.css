@@ -126,3 +126,25 @@
     top: 22px;
     width: 664px;
 }
+
+.tabs_cont{
+    position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 65%;
+    padding-top: 12px;
+}
+
+.tab{
+    color: white;
+    width: 100px;
+    text-align: right;
+    height: 35px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.selected_tab{
+    border-bottom: 3px solid #9c27b0;
+
+}

@@ -29,3 +29,32 @@
 .padding_top_title{
     padding-right: 27px;
 }
+
+.download_btn{
+    background-color: transparent;
+    border: 1px solid #2196f3;
+    color: #2196f3;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 25px;
+    height: 35px;
+    border-radius: 25px;
+}
+
+.last_title{
+    color: #ffffff9c;
+    text-align: right;
+    font-size: 10px;
+    margin-right: 38px;
+    margin-top: 22px;
+}
+
+.check_img{
+    position: absolute;
+    top: 145px;
+    right: 18px;
+}
+
+.download_img_cont_border{
+    border-top: 1px solid gray;
+}

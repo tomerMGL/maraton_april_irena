@@ -1,0 +1,10 @@
+
+
+.download_popup_cont{
+    background-color: white;
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    top: 400px;
+    left: 34%;
+}
