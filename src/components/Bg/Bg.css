@@ -1,7 +1,4 @@
-
-
 .bg_general{
-    position: relative;
     border: 1px solid black;
     width: 900px;
     height: 700px;
@@ -10,6 +7,7 @@
     border-radius: 20px;
     background-color: #222A34;
     box-shadow: 1px 1px 24px #111111;
+    position: relative;
 }
 
 .close_img{
@@ -17,11 +15,114 @@
     top: 21px;
     left: 21px;
 }
-
 .title{
     color: white;
     font-size: 38px;
     text-align: right;
     margin-top: 16px;
     margin-right: 16px;
+    font-family: Aduma;
+}
+
+.upload_btn{
+    background-color: #475366;
+    border: 0;
+    color: white;
+    height: 35px;
+    width: 140px;
+    border-radius: 20px;
+    position: absolute;
+    top: 46px;
+    left: 32px;
+    background-image: url(../../assets/Upload.png);
+    background-repeat: no-repeat;
+    background-position: 20px 10px;
+    text-align: right;
+    padding-right: 19px;
+}
+
+.upload_text{
+    color: #ffffff94;
+    position: absolute;
+    left: 188px;
+    font-size: 12px;
+    direction: rtl;
+}
+
+.right_div{
+    height: 510px;
+    width: 30%;
+    background-color: #2F3A4B;
+    border-radius: 10px;
+}
+
+.left_div{
+    height: 510px;
+    width: 66%;
+    background-color: #2F3A4B;
+    border-radius: 10px;
+}
+
+.middle_div{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    margin-top: 38px;
+}
+
+.right_div_inner, .left_div_inner{
+    background-color: #161B21;
+    height: 410px;
+    margin-top: 50px;
+}
+
+.left_div_footer{
+    position: relative;
+}
+
+
+.takanon_btn{
+    background-color: #475366;
+    border: 0;
+    color: white;
+    height: 29px;
+    width: 140px;
+    border-radius: 20px;
+    position: absolute;
+    top: 12px;
+    left: 11px;
+     background-image: url(../../assets/eula.png); 
+    background-repeat: no-repeat;
+    background-position: 21px 9px;
+    text-align: right;
+    padding-right: 19px;
+}
+
+.takanon_text{
+    color: #ffffff94;
+    position: absolute;
+    right: 0;
+    font-size: 10px;
+    direction: rtl;
+    top: 19px;
+    right: 10px;
+}
+
+
+.footer_cont{
+    position: relative;
+}
+
+.footer_logo{
+    position: absolute;
+    top: 31px;
+    left: 41px;
+    width: 150px;
+}
+
+.footer_banner{
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    width: 664px;
 }
