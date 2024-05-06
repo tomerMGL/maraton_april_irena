@@ -10,8 +10,12 @@ import Download_popup from "../Download_popup/Download_popup";
 
 const Bg = () => {
   const [selected_tab, setSelected_tab] = useState(true);
+  const [show_download_popup, setShow_download_popup] = useState(false);
+  const [show_eula_popup, setShow_eula_popup] = useState(false);
 
   const replaceSelctedTab = () => setSelected_tab(!selected_tab);
+  const replaceShowPopUp = () => setShow_download_popup(!show_download_popup);
+  const replaceEulaPopUp = () => setShow_eula_popup(!show_eula_popup);
 
   return (
     <>
@@ -31,6 +35,7 @@ const Bg = () => {
                 top="true"
                 btn_text="הורד"
                 last_title="איכות טובה עד 0.25 מגה פיקסל"
+                show_download_popup_func={replaceShowPopUp}
               ></DownloadImg>
 
               <DownloadImg
@@ -67,7 +72,10 @@ const Bg = () => {
             </div>
 
             <div className="left_div_footer">
-              <button className="takanon_btn"> תקנון החברה </button>
+              <button className="takanon_btn" onClick={replaceEulaPopUp}>
+                {" "}
+                תקנון החברה{" "}
+              </button>
               <div className="takanon_text">
                 {" "}
                 על ידי העלאת תמונה אתה מסכים לתנאים וההגבלות שלנו. אתר זה מוגן
@@ -84,7 +92,21 @@ const Bg = () => {
         </div>
       </div>
 
-      <Download_popup />
+      {show_download_popup && (
+        <>
+          <div className="layout"></div>
+          <Download_popup close_download_popup={replaceShowPopUp} />
+        </>
+      )}
+
+      {show_eula_popup && (
+        <>
+          <div className="layout"></div>
+          <div className="popup_eula">
+          תקנון תקנון תקנון תקנון תקנון 
+          </div>
+        </>
+      )}
     </>
   );
 };

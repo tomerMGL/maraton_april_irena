@@ -1,10 +1,88 @@
+.download_popup_cont {
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  top: 350px;
+  left: 34%;
+  border-radius: 8px;
+}
 
+.top_div {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 197px;
+  top: -42px;
+  background-color: white;
+  box-shadow: 1px 1px 10px #673ab770;
+  border-radius: 10px;
+  background-image: url(../../assets/Downloads\ Folder.png);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: 10px 10px;
+}
 
-.download_popup_cont{
-    background-color: white;
-    width: 500px;
-    height: 200px;
-    position: absolute;
-    top: 400px;
-    left: 34%;
+.download_title {
+  text-align: center;
+  margin-top: 52px;
+  font-size: 46px;
+  font-family: "aduma";
+  color: #060666;
+}
+
+.subtitle {
+  text-align: center;
+  direction: rtl;
+  color: #060666;
+  font-size: 18px;
+}
+
+.checkbox_cont {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 66px;
+  margin-top: 20px;
+}
+
+.not_robot_img {
+  width: 13px;
+  height: 13px;
+  margin-right: 25px;
+  margin-top: 5px;
+}
+
+.download_btn_cont {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.cancel_btn {
+    font-family: 'aduma';
+    border: 1px solid 060666;
+    background-color: transparent;
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #060666;
+    cursor: pointer;
+
+}
+
+.accept_btn {
+    font-family: 'aduma';
+    border: 0;
+    background-color: transparent;
+    width: 160px;
+    height: 40px;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    background: linear-gradient(45deg, #00bcd4, #9c27b0);
+    cursor: pointer;
+
 }

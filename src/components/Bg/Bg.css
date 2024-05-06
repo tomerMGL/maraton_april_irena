@@ -14,6 +14,7 @@
     position: absolute;
     top: 21px;
     left: 21px;
+    cursor: pointer;
 }
 .title{
     color: white;
@@ -21,7 +22,7 @@
     text-align: right;
     margin-top: 16px;
     margin-right: 16px;
-    font-family: Aduma;
+    font-family: 'Aduma';
 }
 
 .upload_btn{
@@ -147,4 +148,12 @@
 .selected_tab{
     border-bottom: 3px solid #9c27b0;
 
+}
+
+.layout{
+    background-color: #000000ad;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
 }

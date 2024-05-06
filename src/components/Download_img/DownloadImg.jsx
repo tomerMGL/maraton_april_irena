@@ -27,7 +27,7 @@ const DownloadImg = (props) => {
 
       <div className="download_img_subtitle"> {props.subtitle} </div>
 
-      <button className="download_btn">{props.btn_text}</button>
+      <button className="download_btn" onClick={props.show_download_popup_func}>{props.btn_text}</button>
 
       <img src={check} className="check_img" />
       <div className="last_title">{props.last_title}</div>
