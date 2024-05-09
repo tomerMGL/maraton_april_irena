@@ -28,7 +28,7 @@ const Remove_bg = (props) => {
         )
     }
 
-        <img src={upload_img} className='uploaded_img' />
+        <img src={`http://localhost:5000${props.img_name}`} className='uploaded_img' />
     </div>
   )
 }

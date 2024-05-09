@@ -13,6 +13,9 @@ const Bg = () => {
   const [selected_tab, setSelected_tab] = useState(true);
   const [show_download_popup, setShow_download_popup] = useState(false);
   const [show_eula_popup, setShow_eula_popup] = useState(false);
+  const [showErrorMsg, setShowErrorMsg] = useState(false);
+  const [showErrorMsgSize, setShowErrorMsgSize] = useState(false);
+  const [imageUrlForPrev, setImageUrlForPrev] = useState('');
 
   const replaceSelctedTab = () => setSelected_tab(!selected_tab);
   const replaceShowPopUp = () => setShow_download_popup(!show_download_popup);
@@ -23,33 +26,43 @@ const Bg = () => {
     uploadRef.current.click();
   };
 
-  const upload_file = (e) => {
-    let file = e.target.files[0].name;
-    console.log(file);
-    //axios.get(`http://localhost:5000/upload_file`).then((res) => {});
-  };
-
-
   //_________________________FORMDATA_______________________________________//
 
-  let url = 'http://localhost:5000/upload_file';
-  let formData = new FormData(); //formdata object
+  const upload_file = (e) => {
+    let file_info = e.target.files[0];
+    let url = "http://localhost:5000/upload_file";
 
-  formData.append("name", "ABC"); //append the values with key, value pair
-  formData.append("age", 20);
+    if (file_info.size <= 1000000) {
+      if (
+        file_info.type == "image/png" ||
+        file_info.type == "image/jpg" ||
+        file_info.type == "image/jpeg"
+      ) {
+        let formData = new FormData(); //formdata object
 
-  const config = {
-    headers: { "content-type": "multipart/form-data" },
+        formData.append("file", file_info); //append the values with key, value pair
+
+        const config = {
+          headers: { "content-type": "multipart/form-data" },
+        };
+
+        axios
+          .post(url, formData, config)
+          .then((response) => {
+            console.log(response.data);
+            setImageUrlForPrev(response.data)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        setShowErrorMsg(true);
+      }
+    }
+    else{
+      setShowErrorMsgSize(true);
+    }
   };
-
-  axios
-    .post(url, formData, config)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 
   return (
     <>
@@ -67,6 +80,8 @@ const Bg = () => {
           onChange={upload_file}
         />
         <div className="upload_text"> פורמטים נתמכים png, jpeg</div>
+        {showErrorMsg && <div className="error_msg">קובץ לא נתמך</div>}
+        {showErrorMsgSize && <div className="error_msg">קובץ גדול מידי</div>}
 
         <div className="middle_div">
           <div className="right_div">
@@ -107,9 +122,9 @@ const Bg = () => {
             </div>
             <div className="left_div_inner">
               {selected_tab ? (
-                <Remove_bg title="Removed" />
+                <Remove_bg title="Removed" img_name={`/removed_bg_img/${imageUrlForPrev.split('.')[0]}.png`} />
               ) : (
-                <Remove_bg title="Original" />
+                <Remove_bg title="Original" img_name={`/uploaded_img/${imageUrlForPrev}`} />
               )}
             </div>
 
