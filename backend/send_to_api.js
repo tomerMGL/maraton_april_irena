@@ -6,14 +6,15 @@ const path = require('path');
 // API: yiNbdGn47jc3Ypog1av5WyJ5
 
 
-module.exports = function send_to_api(filePath, fileName){
+module.exports = async function send_to_api(filePath, fileName, color){
 
 const inputPath = filePath;
 const formData = new FormData();
 formData.append('size', 'auto');
 formData.append('image_file', fs.createReadStream(inputPath), path.basename(inputPath));
+formData.append('bg_color', color);
 
-axios({
+await axios({
   method: 'post',
   url: 'https://api.remove.bg/v1.0/removebg',
   data: formData,

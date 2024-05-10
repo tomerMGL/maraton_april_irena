@@ -16,6 +16,7 @@ const Bg = () => {
   const [showErrorMsg, setShowErrorMsg] = useState(false);
   const [showErrorMsgSize, setShowErrorMsgSize] = useState(false);
   const [imageUrlForPrev, setImageUrlForPrev] = useState('');
+  const [bg_color, setBg_color] = useState('');
 
   const replaceSelctedTab = () => setSelected_tab(!selected_tab);
   const replaceShowPopUp = () => setShow_download_popup(!show_download_popup);
@@ -26,6 +27,7 @@ const Bg = () => {
     uploadRef.current.click();
   };
 
+  const save_color_func = (color) => setBg_color(color);
   //_________________________FORMDATA_______________________________________//
 
   const upload_file = (e) => {
@@ -41,6 +43,7 @@ const Bg = () => {
         let formData = new FormData(); //formdata object
 
         formData.append("file", file_info); //append the values with key, value pair
+        formData.append("color", bg_color);
 
         const config = {
           headers: { "content-type": "multipart/form-data" },
@@ -122,7 +125,7 @@ const Bg = () => {
             </div>
             <div className="left_div_inner">
               {selected_tab ? (
-                <Remove_bg title="Removed" img_name={`/removed_bg_img/${imageUrlForPrev.split('.')[0]}.png`} />
+                <Remove_bg save_color_func={save_color_func} title="Removed" img_name={`/removed_bg_img/${imageUrlForPrev.split('.')[0]}.png`} />
               ) : (
                 <Remove_bg title="Original" img_name={`/uploaded_img/${imageUrlForPrev}`} />
               )}
@@ -152,7 +155,7 @@ const Bg = () => {
       {show_download_popup && (
         <>
           <div className="layout"></div>
-          <Download_popup close_download_popup={replaceShowPopUp} />
+          <Download_popup close_download_popup={replaceShowPopUp} img_name={`/removed_bg_img/${imageUrlForPrev.split('.')[0]}.png`} />
         </>
       )}
 

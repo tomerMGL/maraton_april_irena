@@ -18,18 +18,19 @@ app.use('/removed_bg_img',express.static('removed_bg_img'))
 
 
 app.post("/upload_file", (req, res) => {
-  console.log(req.files);
-  let fileName = req.files.file.name;
-  let filePath = `${__dirname}/uploaded_img/${fileName}`
 
-  req.files.file.mv(filePath, (err) => {
+  let fileName = req.files.file.name;
+  let currentTime = new Date().getTime();
+  let filePath = `${__dirname}/uploaded_img/${currentTime}_${fileName}`
+  let color = req.body.color;
+
+  req.files.file.mv(filePath, async (err) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("uploaded");
-      send_to_api(filePath, fileName.split('.')[0]);
-        console.log(fileName.split('.')[0]);
-      res.send(`${fileName}`);
+
+      await send_to_api(filePath, currentTime +'_'+ fileName.split('.')[0], color);
+      res.send(currentTime +'_'+fileName);
     }
   });
 });

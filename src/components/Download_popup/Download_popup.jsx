@@ -5,6 +5,19 @@ import not_robot from '../../assets/not_robot.png'
 
 
 const Download_popup = (props) => {
+
+  const download_img = (e) => {
+    fetch(`http://localhost:5000${props.img_name}`)
+    .then(res => {
+      res.blob().then(blog => {
+        let url = window.URL.createObjectURL(blog);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = props.img_name;
+        a.click();
+      })
+    })
+  }
   return (
     <div className='download_popup_cont'>
 
@@ -24,7 +37,7 @@ const Download_popup = (props) => {
 
       <div className='download_btn_cont'>
         <button className='cancel_btn' onClick={props.close_download_popup}>ביטול</button>
-        <button className='accept_btn'>אישור</button>
+        <button className='accept_btn' onClick={download_img} >אישור</button>
       </div>
     </div>
   )
