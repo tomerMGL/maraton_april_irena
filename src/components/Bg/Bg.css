@@ -165,3 +165,22 @@
     left: 55px;
     font-size: 12px;
 }
+
+.loader{
+    width: 294px;
+    height: 16px;
+    position: relative;
+    top: -373px;
+    margin: 0 auto;
+    left: -127px;
+    box-shadow: 1px 1px 10px #00bcd4;
+}
+
+.loader_inner{
+    width: 39%;
+    height: 16px;
+    background: linear-gradient(227deg, #03a9f4, #673ab7);
+    color: white;
+    text-align: center;
+    line-height: 15px;
+}

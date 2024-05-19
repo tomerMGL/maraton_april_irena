@@ -15,8 +15,9 @@ const Bg = () => {
   const [show_eula_popup, setShow_eula_popup] = useState(false);
   const [showErrorMsg, setShowErrorMsg] = useState(false);
   const [showErrorMsgSize, setShowErrorMsgSize] = useState(false);
-  const [imageUrlForPrev, setImageUrlForPrev] = useState('');
-  const [bg_color, setBg_color] = useState('');
+  const [imageUrlForPrev, setImageUrlForPrev] = useState("");
+  const [bg_color, setBg_color] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const replaceSelctedTab = () => setSelected_tab(!selected_tab);
   const replaceShowPopUp = () => setShow_download_popup(!show_download_popup);
@@ -31,6 +32,7 @@ const Bg = () => {
   //_________________________FORMDATA_______________________________________//
 
   const upload_file = (e) => {
+    setLoader(true); // LOADER
     let file_info = e.target.files[0];
     let url = "http://localhost:5000/upload_file";
 
@@ -53,7 +55,8 @@ const Bg = () => {
           .post(url, formData, config)
           .then((response) => {
             console.log(response.data);
-            setImageUrlForPrev(response.data)
+            setImageUrlForPrev(response.data);
+            setLoader(false);
           })
           .catch((error) => {
             console.log(error);
@@ -61,8 +64,7 @@ const Bg = () => {
       } else {
         setShowErrorMsg(true);
       }
-    }
-    else{
+    } else {
       setShowErrorMsgSize(true);
     }
   };
@@ -125,9 +127,18 @@ const Bg = () => {
             </div>
             <div className="left_div_inner">
               {selected_tab ? (
-                <Remove_bg save_color_func={save_color_func} title="Removed" img_name={`/removed_bg_img/${imageUrlForPrev.split('.')[0]}.png`} />
+                <Remove_bg
+                  save_color_func={save_color_func}
+                  title="Removed"
+                  img_name={`/removed_bg_img/${
+                    imageUrlForPrev.split(".")[0]
+                  }.png`}
+                />
               ) : (
-                <Remove_bg title="Original" img_name={`/uploaded_img/${imageUrlForPrev}`} />
+                <Remove_bg
+                  title="Original"
+                  img_name={`/uploaded_img/${imageUrlForPrev}`}
+                />
               )}
             </div>
 
@@ -155,7 +166,10 @@ const Bg = () => {
       {show_download_popup && (
         <>
           <div className="layout"></div>
-          <Download_popup close_download_popup={replaceShowPopUp} img_name={`/removed_bg_img/${imageUrlForPrev.split('.')[0]}.png`} />
+          <Download_popup
+            close_download_popup={replaceShowPopUp}
+            img_name={`/removed_bg_img/${imageUrlForPrev.split(".")[0]}.png`}
+          />
         </>
       )}
 
@@ -164,6 +178,12 @@ const Bg = () => {
           <div className="layout"></div>
           <div className="popup_eula">תקנון תקנון תקנון תקנון תקנון</div>
         </>
+      )}
+
+      {loader && (
+        <div className="loader">
+          <div className="loader_inner">39%</div>
+        </div>
       )}
     </>
   );
